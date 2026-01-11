@@ -1,9 +1,11 @@
+/* ===== БАЗАЛЫҚ ===== */
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #f3f6fb;
 }
 
+/* ===== HEADER ===== */
 .header {
   background: linear-gradient(135deg, #1e40af, #2563eb);
   color: white;
@@ -16,41 +18,74 @@ body {
   margin-bottom: 10px;
 }
 
+/* ===== MAIN ===== */
 main {
   display: flex;
-  justify-content: center;
-  margin: 40px 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 30px 10px;
 }
 
+/* ===== CARD ===== */
 .card {
   background: white;
   padding: 24px;
-  max-width: 420px;
   width: 100%;
+  max-width: 420px;
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   text-align: center;
 }
 
+.card h2 {
+  margin-top: 0;
+}
+
+/* ===== STATUS ===== */
 .ok {
   background: #16a34a;
   color: white;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 12px;
   font-size: 14px;
 }
 
+/* ===== QR ===== */
 #qr {
   margin: 20px 0;
 }
 
+/* ===== INPUT ===== */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* ===== BUTTON ===== */
 button {
   width: 100%;
   padding: 14px;
+  margin-top: 15px;
   background: #2563eb;
   color: white;
   border: none;
   border-radius: 12px;
   font-size: 16px;
   cursor: pointer;
+}
+
+/* ===== HIDDEN ===== */
+.hidden {
+  display: none;
+}
+
+/* ===== VERIFY RESULT ===== */
+#verifyResult {
+  margin-top: 10px;
+  font-weight: bold;
 }
