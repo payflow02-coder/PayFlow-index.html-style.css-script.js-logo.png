@@ -1,15 +1,50 @@
-// дата шығару
-document.getElementById("date").innerText =
-  new Date().toLocaleString("kk-KZ");
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>PayFlow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-// QR генерация (сыртқы сервис, бірақ код авторлық)
-const qrDiv = document.getElementById("qr");
-const checkId = document.getElementById("checkId").innerText;
-const url = window.location.href + "?check=" + checkId;
+<header class="header">
+  <img src="logo.png" class="logo">
+  <h1>PayFlow</h1>
+  <p>Цифрлық чек жүйесі</p>
+</header>
 
-qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}">`;
+<main>
 
-// PDF генерация (браузер print)
-function downloadPDF() {
-  window.print();
-}
+  <!-- Чек жасау -->
+  <div class="card">
+    <h2>Цифрлық чек генерациясы</h2>
+    <button onclick="generateCheck()">Чек жасау</button>
+  </div>
+
+  <!-- Чек нәтижесі -->
+  <div class="card hidden" id="receipt">
+    <h2>Цифрлық чек</h2>
+
+    <p><b>ID:</b> <span id="checkId"></span></p>
+    <p><b>Күні:</b> <span id="date"></span></p>
+    <p><b>Статус:</b> <span class="ok">Расталды</span></p>
+
+    <div id="qr"></div>
+
+    <button onclick="downloadPDF()">PDF жүктеу</button>
+  </div>
+
+  <!-- Тексеру -->
+  <div class="card">
+    <h2>Чекті тексеру</h2>
+    <input id="inputId" placeholder="Чек ID енгіз">
+    <button onclick="verifyCheck()">Тексеру</button>
+    <p id="verifyResult"></p>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
