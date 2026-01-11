@@ -1,15 +1,37 @@
-// дата шығару
-document.getElementById("date").innerText =
-  new Date().toLocaleString("kk-KZ");
+let savedCheckId = "";
 
-// QR генерация (сыртқы сервис, бірақ код авторлық)
-const qrDiv = document.getElementById("qr");
-const checkId = document.getElementById("checkId").innerText;
-const url = window.location.href + "?check=" + checkId;
+// Чек жасау
+function generateCheck() {
+  const id = "PF-" + Math.floor(100000 + Math.random() * 900000);
+  savedCheckId = id;
 
-qrDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}">`;
+  document.getElementById("checkId").innerText = id;
+  document.getElementById("date").innerText =
+    new Date().toLocaleString("kk-KZ");
 
-// PDF генерация (браузер print)
+  document.getElementById("receipt").classList.remove("hidden");
+
+  // QR
+  const url = window.location.href + "?check=" + id;
+  document.getElementById("qr").innerHTML =
+    `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}">`;
+}
+
+// PDF
 function downloadPDF() {
   window.print();
+}
+
+// Чек тексеру
+function verifyCheck() {
+  const input = document.getElementById("inputId").value;
+  const result = document.getElementById("verifyResult");
+
+  if (input === savedCheckId) {
+    result.innerText = "✅ Чек расталды";
+    result.style.color = "green";
+  } else {
+    result.innerText = "❌ Чек табылмады";
+    result.style.color = "red";
+  }
 }
