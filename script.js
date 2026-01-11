@@ -11,18 +11,18 @@ function generateCheck() {
 
   document.getElementById("receipt").classList.remove("hidden");
 
-  // QR
+  // QR-код
   const url = window.location.href + "?check=" + id;
   document.getElementById("qr").innerHTML =
     `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}">`;
 }
 
-// PDF
+// PDF жүктеу
 function downloadPDF() {
   window.print();
 }
 
-// Чек тексеру
+// Чекті тексеру
 function verifyCheck() {
   const input = document.getElementById("inputId").value;
   const result = document.getElementById("verifyResult");
